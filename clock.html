@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Clock</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: black;
+            color: white;
+            padding-top: 100px;
+        }
+        .clock {
+            font-size: 50px;
+            font-weight: bold;
+        }
+        .date {
+            font-size: 30px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock" id="clock"></div>
+    <div class="date" id="date"></div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString();
+            const dateStr = now.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+            document.getElementById("clock").innerHTML = timeStr;
+            document.getElementById("date").innerHTML = dateStr;
+        }
+        
+        setInterval(updateClock, 1000); // Update every second
+        updateClock(); // Initial call to show immediately
+    </script>
+</body>
+</html>
